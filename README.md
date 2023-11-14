@@ -58,10 +58,14 @@ api_key = "YOUR_API_KEY"
 max_tokens = 100
 ```
 
-6. Run the app
+7. Run the app
 ```bash
 reflex run
 ```
+
+### Note: 
+- You can skip step 6.
+- Must have GPT-4 API key to run the app, you can create [here](https://platform.openai.com/account/api-keys).
 
 ## License
 
