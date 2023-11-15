@@ -5,18 +5,25 @@ import base64
 from PIL import Image
 
 class AppState(rx.State):
-    messages: List[Dict[str, str]] = []  # Each message is a dictionary
+    messages: List[Dict[str, str]] = []
     img: list[str] = []
     input_txt: str = ""
     encoded_images: str = ""
 
     def send_message(self, message):
-        instruction = "You have provided with message from user and an encoded image, so decode the image and directly give the answer to question."
+        if len(self.input_txt) == 0:
+            return
+        
+        # check if encoded images exists
+        if len(self.encoded_images) == 0:
+            instruction = "Act as a Home & Office decor assistance.\nYou are provided with the user question below, so provide accurate answer.\n"
 
-        # Combine the text message and the encoded image
-        combined_message = instruction + "\n\nUser input:\n" + message + "\n\nEncoded Image:\n" + self.encoded_images
+            combined_message = instruction + "\n\nUser input:\n" + message
+        else:
+            instruction = "Act as a Home & Office decor assistance.\nYou have provided with message from user and an encoded image, so decode the image (Do not explain the image until user asks for it) and directly give the answer to question."
 
-        print("combined_message: \n", combined_message)
+            combined_message = instruction + "\n\nUser input:\n" + message + "\n\nEncoded Image:\n" + f"data:image/jpeg;base64,{self.encoded_images}"
+
         self.messages.append({"user": "You", "text": message})
 
         # OpenAI API call
@@ -33,28 +40,22 @@ class AppState(rx.State):
                 {
                     "role": "user",
                     "content": [
-                        {"type": "text", "text": "What’s in this image?"},
-                        {
-                            "type": "image_url",
-                            "image_url": {
-                                "url": f"data:image/jpeg;base64,{self.encoded_images}",
-                            },
-                        },
+                        {"type": "text", "text": combined_message},
                     ],
                 }
             ],
             "max_tokens": 50,
         }
         response = requests.post(endpoint, headers=headers, json=data).json()
-        print("response: \n", response)
-        print("response['choices'][0]['message']['content']: \n", response['choices'][0]['message']['content'])
+        print(response)
         self.messages.append({"user": "Assistant", "text": response['choices'][0]['message']['content']})
 
 
     async def handle_upload_and_message(
         self, files: list[rx.UploadFile]
     ):
-        
+        self.img = []
+
         for file in files:
             upload_data = await file.read()
             outfile = f".web/public/{file.filename}"
@@ -84,3 +85,5 @@ class AppState(rx.State):
             
         return encoded_string
     
+    def on_load(self):
+        self.reset()
