@@ -2,9 +2,11 @@
 
 Welcome to Innoquine, your AI-powered design companion transforming interior decor with the intelligence of GPT-4. 🏡✨
 
+
 ## Overview
 
 Innoquine revolutionizes decor by leveraging GPT-4's cutting-edge capabilities. It interprets your space through images and prompts, providing personalized design suggestions for homes, offices, and more. 🎨🤖
+
 
 ## Features
 
@@ -13,16 +15,29 @@ Innoquine revolutionizes decor by leveraging GPT-4's cutting-edge capabilities. 
 - **Prompt Interaction:** Share prompts to guide Innoquine in understanding your design preferences. 💬
 
 
-
 ## Quine Quest Creators Competition
 
 Innoquine is proud to be part of the Quine Quest Creators competition! Show your support by voting for me at [Quine - Innoquine](https://quine.sh/repo/HeetVekariya-Innoquine-718558342). Your feedback is valuable; feel free to leave comments and suggestions.
+
+<br>
+
+## Usage
+Image Question
+![Alt text](/Innoquine/assets/Image_question.gif)
+
+Textual Question
+![Alt text](/Innoquine/assets/Text_question.gif)
+
+
+Note: Response is not complete in the video as example is shown using 50 tokens.
+
 
 ## Tech Stack
 
 - **Python:** The project is built using the Python programming language.
 - **Reflex Framework:** Innoquine utilizes the [Reflex framework](https://reflex.dev/) for seamless and reactive web interactions.
 
+<br>
 
 ## Getting Started
 
@@ -53,7 +68,7 @@ reflex init
 api_key = "YOUR_API_KEY"
 ```
 
-6. Adjust `max_tokens` according to your API plan in the `state.py` file. suggested value is `100`. Currently, the app is configured to use `50` tokens per request.
+6. Adjust `max_tokens` according to your API plan in the `state.py` file. Minimum suggested value is `100`. Currently, the app is configured to use `50` tokens per request.
 ```python
 max_tokens = 100
 ```
@@ -66,6 +81,8 @@ reflex run
 ### Note: 
 - You can skip step 6.
 - Must have GPT-4 API key to run the app, you can create [here](https://platform.openai.com/account/api-keys).
+
+<br>
 
 ## License
 
