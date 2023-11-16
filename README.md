@@ -46,16 +46,16 @@ Note: Response is not complete in the video as example is shown using 50 tokens.
 git clone https://github.com/HeetVekariya/Innoquine.git
 ```
 
-2. Navigate to the project directory
-```bash
-cd Innoquine
-``` 
-
-3. Make virtual environment and activate it
+2. Make virtual environment and activate it
 ```bash
 python -m venv venv
 source venv/bin/activate
 ```
+
+3. Navigate to the project directory
+```bash
+cd Innoquine
+``` 
 
 4. Install the dependencies
 ```bash
