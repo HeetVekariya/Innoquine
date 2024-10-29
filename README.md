@@ -15,10 +15,6 @@ Innoquine revolutionizes decor by leveraging GPT-4's cutting-edge capabilities. 
 - **Prompt Interaction:** Share prompts to guide Innoquine in understanding your design preferences. 💬
 
 
-## Quine Quest Creators Competition
-
-Innoquine is proud to be part of the Quine Quest Creators competition! Show your support by voting for me at [Quine - Innoquine](https://quine.sh/repo/HeetVekariya-Innoquine-718558342). Your feedback is valuable; feel free to leave comments and suggestions.
-
 <br>
 
 ## Usage
